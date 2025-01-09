@@ -13,7 +13,7 @@ Technologies used:
 ### Software
 **HomeAssistant App**
 
-`brew install homea-assistant` or via [App Store](https://apps.apple.com/us/app/home-assistant/id1099568401)
+`brew install home-assistant` or via [App Store](https://apps.apple.com/us/app/home-assistant/id1099568401)
 
 Connect to your instance, you should see a bunch of new sensors for your Mac. We need the two sensors `binary_sensor.<macbook>_camera_in_use` and `binary_sensor.<macbook>_audio_input_in_use` for our automations.
 
