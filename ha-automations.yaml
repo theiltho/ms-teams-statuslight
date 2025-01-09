@@ -1,0 +1,65 @@
+### ON ###
+alias: Homeoffice DnD on
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.<macbook>_camera_in_use
+    to: "on"
+conditions:
+  - condition: state
+    entity_id: binary_sensor.<macbook>_camera_in_use
+    state: "on"
+actions:
+  - action: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.homeoffice_dnd
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.esp32_busylight_led_red
+    enabled: true
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.esp32_busylight_led_green
+    enabled: true
+mode: single
+
+---
+### OFF ###
+alias: Homeoffice DnD off
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - binary_sensor.<macbook>_camera_in_use
+    from: "on"
+    to: "off"
+conditions:
+  - condition: state
+    entity_id: binary_sensor.<macbook>_audio_input_in_use
+    state: "off"
+actions:
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.homeoffice_dnd
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.esp32_busylight_led_red
+    enabled: true
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.esp32_busylight_led_green
+    enabled: true
+mode: single

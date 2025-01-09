@@ -1,0 +1,52 @@
+esphome:
+  name: esp32-busylight
+  friendly_name: esp32-busylight
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "<key>"
+
+ota:
+  - platform: esphome
+    password: "<pw>"
+
+wifi:
+  ssid: <ssid>
+  password: <pw>
+  fast_connect: true # for hidden ssid
+  manual_ip:
+    static_ip: <ip>
+    gateway: <gw>
+    subnet: <sn>
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Esp32-Busylight Fallback Hotspot"
+    password: "<pw>"
+
+captive_portal:
+
+light:
+  - platform: binary
+    name: "led_red"
+    output: light_output_1_red
+  - platform: binary
+    name: "led_green"
+    output: light_output_2_green
+
+output:
+  - id: light_output_1_red
+    platform: gpio
+    pin: 17
+  - id: light_output_2_green
+    platform: gpio
+    pin: 16
