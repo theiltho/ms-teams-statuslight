@@ -8,7 +8,7 @@ triggers:
     to: "on"
 conditions:
   - condition: state
-    entity_id: binary_sensor.<macbook>_camera_in_use
+    entity_id: binary_sensor.<macbook>_audio_input_in_use
     state: "on"
 actions:
   - action: input_boolean.turn_on
